@@ -1,0 +1,742 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学习总结,javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x7B14;&amp;#x8BB0;&amp;#x7C7B;&amp;#x6587;&amp;#x7AE0;
+&amp;#x4F5C;&amp;#x7528;&amp;#x57DF;&amp;#x6BCF;&amp;#x4E2A;&amp;#x73AF;&amp;#x5883;&amp;#x80FD;&amp;#x8BBF;&amp;#x95EE;&amp;#x5230;&amp;#x7684;&amp;#x6807;&amp;#x8BC6;&amp;#x7B26;&amp;#x96C6;&amp;#x5408;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript作用域">
+<meta property="og:url" content="http://yoursite.com/2017/03/06/javascript作用域/index.html">
+<meta property="og:site_name" content="说的点滴">
+<meta property="og:description" content="&amp;#x7B14;&amp;#x8BB0;&amp;#x7C7B;&amp;#x6587;&amp;#x7AE0;
+&amp;#x4F5C;&amp;#x7528;&amp;#x57DF;&amp;#x6BCF;&amp;#x4E2A;&amp;#x73AF;&amp;#x5883;&amp;#x80FD;&amp;#x8BBF;&amp;#x95EE;&amp;#x5230;&amp;#x7684;&amp;#x6807;&amp;#x8BC6;&amp;#x7B26;&amp;#x96C6;&amp;#x5408;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC">
+<meta property="og:updated_time" content="2017-03-06T02:52:01.055Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript作用域">
+<meta name="twitter:description" content="&amp;#x7B14;&amp;#x8BB0;&amp;#x7C7B;&amp;#x6587;&amp;#x7AE0;
+&amp;#x4F5C;&amp;#x7528;&amp;#x57DF;&amp;#x6BCF;&amp;#x4E2A;&amp;#x73AF;&amp;#x5883;&amp;#x80FD;&amp;#x8BBF;&amp;#x95EE;&amp;#x5230;&amp;#x7684;&amp;#x6807;&amp;#x8BC6;&amp;#x7B26;&amp;#x96C6;&amp;#x5408;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/06/javascript作用域/"/>
+
+
+
+
+
+  <title> javascript作用域 | 说的点滴 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">说的点滴</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-demos">
+          <a href="/categories/demos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            我的demo
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/javascript作用域/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="王说说">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="说的点滴">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="说的点滴" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                javascript作用域
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T10:47:44+08:00">
+                2017-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>&#x7B14;&#x8BB0;&#x7C7B;&#x6587;&#x7AE0;</strong></p>
+<h2 id="&#x4F5C;&#x7528;&#x57DF;"><a href="#&#x4F5C;&#x7528;&#x57DF;" class="headerlink" title="&#x4F5C;&#x7528;&#x57DF;"></a>&#x4F5C;&#x7528;&#x57DF;</h2><p>&#x6BCF;&#x4E2A;&#x73AF;&#x5883;&#x80FD;&#x8BBF;&#x95EE;&#x5230;&#x7684;&#x6807;&#x8BC6;&#x7B26;&#x96C6;&#x5408;&#xFF0C;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A;&#x201C;&#x4F5C;&#x7528;&#x57DF;&#x201D;<br>&#x6709;&#x4E09;&#x79CD;&#x4F5C;&#x7528;&#x57DF;&#xFF1A;</p>
+<ul>
+<li>&#x5168;&#x5C40;</li>
+<li>&#x51FD;&#x6570;</li>
+<li>&#x5757;&#x2014;&#x2014;{}</li>
+</ul>
+<a id="more"></a>
+<h3 id="&#x9759;&#x6001;&#x4F5C;&#x7528;&#x57DF;"><a href="#&#x9759;&#x6001;&#x4F5C;&#x7528;&#x57DF;" class="headerlink" title="&#x9759;&#x6001;&#x4F5C;&#x7528;&#x57DF;"></a>&#x9759;&#x6001;&#x4F5C;&#x7528;&#x57DF;</h3><p>&#x4F5C;&#x7528;&#x57DF;&#x5728;&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x4FDD;&#x5B58;&#x5305;&#x542B;&#x5176;&#x7684;&#x6240;&#x6709;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#x5BF9;&#x8C61;&#x96C6;&#x5408;&#xFF0C;&#x6B64;&#x6784;&#x6210;&#x4E86;&#x2014;&#x2014;&#x9759;&#x6001;&#x4F5C;&#x7528;&#x57DF;&#xFF08;&#x5728;&#x521B;&#x5EFA;&#x65F6;&#x83B7;&#x5F97;&#x7684;&#xFF0C;&#x9759;&#x6001;&#x5B9A;&#x4E49;&#x7684;&#xFF09;</p>
+<h2 id="&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;"><a href="#&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;" class="headerlink" title="&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;"></a>&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;</h2><p>&#x5728;&#x8FDB;&#x5165;&#x67D0;&#x4F5C;&#x7528;&#x57DF;&#x4E4B;&#x524D;&#xFF1A;<br>  &#x4F1A;&#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;&#xFF0C;&#x4EE5;&#x6808;&#x7ED3;&#x6784;&#x4FDD;&#x5B58;&#xFF0C;&#x540E;&#x8FDB;&#x5148;&#x51FA;&#xFF0C;&#x6B64;&#x4E3A;&#x8C03;&#x7528;&#x6808;&#x3002;<br>  &#x6267;&#x884C;&#x73AF;&#x5883;&#xFF08;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#xFF09;&#x6709;&#x5404;&#x79CD;&#x8BB0;&#x5F55;&#x5668;&#xFF1A;</p>
+<ul>
+<li>&#x4EE3;&#x7801;&#x6267;&#x884C;&#x72B6;&#x6001;</li>
+<li>&#x51FD;&#x6570;&#x2014;&#x2014;&#x8BB0;&#x5F55;&#x5F53;&#x524D;&#x51FD;&#x6570;&#x4F53;</li>
+<li>&#x8303;&#x6D9B;&#x2014;&#x2014;&#x5185;&#x90E8;&#x5BF9;&#x8C61;&#x96C6;&#x5408;&#xFF0C;&#x5168;&#x5C40;&#x73AF;&#x5883;&#x53CA;&#x5176;&#x4F5C;&#x7528;&#x57DF;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x4EE3;&#x7801;&#xFF0C;&#x5176;&#x4ED6;&#x76F8;&#x5173;&#x72B6;&#x6001;&#xFF0C;&#x8D44;&#x6E90;</li>
+<li>&#x8BCD;&#x6CD5;&#x73AF;&#x5883;</li>
+<li>&#x53D8;&#x91CF;&#x73AF;&#x5883;</li>
+</ul>
+<p>&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x8FDB;&#x5165;&#x53E6;&#x4E00;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x5E76;&#x5C06;&#x5F53;&#x524D;&#x6267;&#x884C;&#x73AF;&#x5883;&#x6302;&#x8D77;&#x3002;</p>
+<h2 id="&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#x2014;&#x2014;&#x53D8;&#x91CF;&#x73AF;&#x5883;"><a href="#&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#x2014;&#x2014;&#x53D8;&#x91CF;&#x73AF;&#x5883;" class="headerlink" title="&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#x2014;&#x2014;&#x53D8;&#x91CF;&#x73AF;&#x5883;"></a>&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#x2014;&#x2014;&#x53D8;&#x91CF;&#x73AF;&#x5883;</h2><p>&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#x4E2D;&#xFF1A;</p>
+<ul>
+<li>&#x73AF;&#x5883;&#x8BB0;&#x5F55;&#xFF1A;&#x8BB0;&#x5F55;&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#x4E2D;&#x6240;&#x6709;&#x6807;&#x793A;&#x7B26;&#x548C;&#x5177;&#x4F53;&#x503C;&#x4E4B;&#x95F4;&#x7684;&#x8054;&#x7CFB;</li>
+<li>&#x6307;&#x5411;&#x5916;&#x90E8;&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#x7684;&#x5F15;&#x7528;</li>
+</ul>
+<p>&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#x7528;&#x6765;&#x89E3;&#x6790;&#x6807;&#x793A;&#x7B26;&#xFF0C;&#x7BA1;&#x7406;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x4E14;&#x5F15;&#x7528;&#x5916;&#x90E8;&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#xFF0C;&#x8FBE;&#x5230;&#x4ECE;&#x5185;&#x5230;&#x5916;&#xFF0C;&#x8FDE;&#x6210;&#x4E00;&#x4E32;&#x3002;</p>
+<h2 id="&#x4F5C;&#x7528;&#x57DF;&#x94FE;"><a href="#&#x4F5C;&#x7528;&#x57DF;&#x94FE;" class="headerlink" title="&#x4F5C;&#x7528;&#x57DF;&#x94FE;"></a>&#x4F5C;&#x7528;&#x57DF;&#x94FE;</h2><p>&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#x5C42;&#x5C42;&#x5D4C;&#x5957;&#xFF0C;&#x4E14;&#x5185;&#x90E8;&#x5F15;&#x7528;&#x5916;&#x90E8;&#xFF0C;&#x5C06;&#x4F5C;&#x7528;&#x57DF;&#x94FE;&#x63A5;&#x4E86;&#x8D77;&#x6765;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x4F5C;&#x7528;&#x57DF;&#x94FE;<br>&#x5728;&#x8FDB;&#x5165;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x6784;&#x5EFA;&#x6B64;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x7684;&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#xFF0C;&#x5E76;&#x94FE;&#x63A5;&#x5728;&#x521B;&#x5EFA;&#x65F6;&#x5DF2;&#x7ECF;&#x4FDD;&#x5B58;&#x597D;&#x7684;&#x9759;&#x6001;&#x4F5C;&#x7528;&#x57DF;&#x524D;&#x7AEF;&#xFF0C;&#x5728;&#x89E3;&#x6790;&#x6807;&#x793A;&#x7B26;&#x65F6;&#xFF0C;&#x5C06;&#x7B2C;&#x4E00;&#x4E2A;&#x88AB;&#x8BBF;&#x95EE;&#x3002;<br>&#x8FD9;&#x4FBF;&#x6784;&#x6210;&#x4E86;&#x5B8C;&#x6574;&#x7684;&#xFF0C;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x94FE;&#x3002;</p>
+<h2 id="&#x5177;&#x4F53;&#x5B9E;&#x73B0;"><a href="#&#x5177;&#x4F53;&#x5B9E;&#x73B0;" class="headerlink" title="&#x5177;&#x4F53;&#x5B9E;&#x73B0;"></a>&#x5177;&#x4F53;&#x5B9E;&#x73B0;</h2><p>&#x4EFB;&#x4F55;&#x5BF9;&#x8C61;&#x5747;&#x6709;[[scope]]&#x5C5E;&#x6027;</p>
+<p>&#x4EC5;&#x8BF4;&#x51FD;&#x6570;&#xFF08;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x5BF9;&#x8C61;&#xFF09;</p>
+<p>&#x5728;&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x65F6;&#xFF0C;[[scope]]&#x4FDD;&#x5B58;&#x4E0B;&#x9759;&#x6001;&#x4F5C;&#x7528;&#x57DF;&#x2014;&#x2014;&#x5373;&#x6B64;&#x65F6;&#x6267;&#x884C;&#x73AF;&#x5883;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x94FE;&#xFF08;&#x56E0;&#x4E3A;&#x8FD8;&#x6CA1;&#x6709;&#x8FDB;&#x5165;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;&#xFF0C;&#x6240;&#x4EE5;&#x6B64;&#x65F6;&#x6267;&#x884C;&#x73AF;&#x5883;&#xFF0C;&#x8FD8;&#x662F;&#x5305;&#x88F9;&#x51FD;&#x6570;&#x7684;&#x90A3;&#x4E2A;&#x6267;&#x884C;&#x73AF;&#x5883;&#xFF09;&#x3002;</p>
+<p>&#x4F5C;&#x7528;&#x57DF;&#x94FE;&#x662F;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#xFF0C;&#x4FDD;&#x5B58;&#x7740;&#x6BCF;&#x4E2A;&#x6267;&#x884C;&#x73AF;&#x5883;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x5730;&#x5740;&#x3002;</p>
+<p>&#x51FD;&#x6570;&#x6BCF;&#x6B21;&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x90FD;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;&#xFF0C;&#x6BCF;&#x4E2A;&#x6267;&#x884C;&#x73AF;&#x5883;&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x94FE;</p>
+<p>&#x4F5C;&#x7528;&#x57DF;&#x94FE;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x4E3A;[[scope]]&#x5C5E;&#x6027;&#x4E2D;&#x7684;&#x503C;&#x3002;&#x521D;&#x59CB;&#x5316;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x521B;&#x5EFA;&#x6D3B;&#x52A8;&#x5BF9;&#x8C61;&#x2014;&#x2014;&#x4E5F;&#x5C31;&#x662F;&#x52A8;&#x6001;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x538B;&#x5165;&#x5230;&#x4F5C;&#x7528;&#x57DF;&#x94FE;&#x4E2D;&#xFF0C;&#x5904;&#x5728;&#x6700;&#x9876;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x6D3B;&#x52A8;&#x5BF9;&#x8C61;&#x2014;&#x2014;&#x51FD;&#x6570;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x53D8;&#x91CF;&#x5BF9;&#x8C61;&#xFF08;&#x8BCD;&#x6CD5;&#x73AF;&#x5883;&#xFF09;&#xFF0C;&#x5305;&#x542B;&#x6240;&#x6709;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x547D;&#x540D;&#x53C2;&#x6570;&#xFF0C;&#x53C2;&#x6570;&#x96C6;&#x5408;&#xFF0C;this&#xFF0C;&#x58F0;&#x660E;&#x51FD;&#x6570;&#x7B49;&#x3002;&#x6267;&#x884C;&#x51FD;&#x6570;&#x9500;&#x6BC1;&#xFF0C;&#x6D3B;&#x52A8;&#x5BF9;&#x8C61;&#x4E5F;&#x8DDF;&#x7740;&#x9500;&#x6BC1;&#xFF0C;&#x9664;&#x975E;&#xFF0C;&#x4F9D;&#x7136;&#x6709;&#x53D8;&#x91CF;&#x5728;&#x5F15;&#x7528;&#x5B83;&#x3002;</p>
+<h2 id="&#x95ED;&#x5305;"><a href="#&#x95ED;&#x5305;" class="headerlink" title="&#x95ED;&#x5305;"></a>&#x95ED;&#x5305;</h2><p>&#x51FD;&#x6570;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x51FD;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x5916;&#x5C42;&#x51FD;&#x6570;&#x5C31;&#x662F;&#x95ED;&#x5305;&#xFF0C;chrome devTools&#x91CC;&#x8FB9;&#x4E5F;&#x80FD;&#x770B;&#x5230;</p>
+<ul>
+<li>Local</li>
+<li>Closure</li>
+<li>Global</li>
+</ul>
+<p>&#x56E0;&#x4E3A;&#x4F5C;&#x7528;&#x57DF;&#x94FE;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x5185;&#x5C42;&#x51FD;&#x6570;&#x4FDD;&#x5B58;&#x6709;&#x95ED;&#x5305;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x5F15;&#x7528;&#x3002;&#x5982;&#x679C;&#x5185;&#x5C42;&#x51FD;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x88AB;&#x9500;&#x6BC1;&#xFF0C;&#x5C31;&#x5BFC;&#x81F4;&#xFF0C;&#x95ED;&#x5305;&#x4F5C;&#x7528;&#x57DF;&#x56E0;&#x4E3A;&#x4F9D;&#x7136;&#x5B58;&#x5728;&#x5F15;&#x7528;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x5185;&#x5C42;&#x51FD;&#x6570;&#x4FDD;&#x5B58;&#x7684;&#x662F;&#x95ED;&#x5305;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x5176;&#x4E3A;&#x95ED;&#x5305;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x6700;&#x7EC8;&#x72B6;&#x6001;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5185;&#x5C42;&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x65F6;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>&#x51FD;&#x6570;&#x7684;&#x5185;&#x90E8;&#x5C5E;&#x6027;&#xFF0C;</p>
+<p>&#x5728;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF08;&#x6267;&#x884C;&#xFF09;&#x65F6;&#xFF0C;&#x5148;&#x521D;&#x59CB;&#x5316;&#x6D3B;&#x52A8;&#x5BF9;&#x8C61;&#xFF0C;&#x6D3B;&#x52A8;&#x5BF9;&#x8C61;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5C31;&#x5305;&#x542B;this&#x3002;</p>
+<p>this&#x6307;&#x5411;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C;this&#x4F1A;&#x610F;&#x5916;&#x6539;&#x53D8;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function Thing() {</div><div class="line">};</div><div class="line">Thing.prototype.foo = &quot;bar&quot;;</div><div class="line">Thing.prototype.logFoo = function () {</div><div class="line">     var self = this;</div><div class="line">     function doIt() {</div><div class="line">         console.log(self.foo);</div><div class="line">     }</div><div class="line">     doIt();</div><div class="line"> }</div><div class="line"></div><div class="line"> function doItIndirectly(method) {</div><div class="line">     method();</div><div class="line"> }</div><div class="line"> var thing = new Thing();</div><div class="line"> thing.logFoo(); //logs &quot;bar&quot;</div><div class="line"> doItIndirectly(thing.logFoo);</div></pre></td></tr></table></figure>
+<p>&#x663E;&#x7136;&#xFF0C;this&#x5728;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8C03;&#x7528;&#x8005;&#x53D1;&#x751F;&#x4E86;&#x53D8;&#x5316;&#x3002;</p>
+<p>&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#xFF0C;&#x53D8;&#x91CF;&#x4FDD;&#x5B58;&#x51FD;&#x6570;&#x4F53;&#x5165;&#x53E3;&#x5730;&#x5740;&#xFF0C;&#x800C;&#x53D8;&#x91CF;&#xFF0C;&#x5C5E;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x53D8;&#x91CF;&#x5BF9;&#x8C61;&#xFF0C;&#x5168;&#x5C40;&#x5BF9;&#x8C61;&#x4E0B;&#xFF0C;this&#x81EA;&#x7136;&#x6307;&#x5411;window&#x3002;<br>&#xFF08;&#x5176;&#x5B9E;&#x5F88;&#x7275;&#x5F3A;&#x3002;this&#x5728;js&#x5F15;&#x64CE;&#x4E2D;&#x7A76;&#x7ADF;&#x662F;&#x600E;&#x4E48;&#x4E2A;&#x8FD0;&#x4F5C;&#x65B9;&#x5F0F;&#xFF0C;&#x8FD8;&#x662F;&#x4E0D;&#x6E05;&#x695A;&#x3002;&#xFF09;</p>
+<h2 id="&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x2014;&#x2014;&#x201C;-&#x201D;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x5728;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#xFF0C;&#x7A76;&#x7ADF;&#x505A;&#x4E86;&#x90A3;&#x4E9B;&#x64CD;&#x4F5C;&#xFF1F;"><a href="#&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x2014;&#x2014;&#x201C;-&#x201D;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x5728;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#xFF0C;&#x7A76;&#x7ADF;&#x505A;&#x4E86;&#x90A3;&#x4E9B;&#x64CD;&#x4F5C;&#xFF1F;" class="headerlink" title="&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x2014;&#x2014;&#x201C;.&#x201D;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x5728;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#xFF0C;&#x7A76;&#x7ADF;&#x505A;&#x4E86;&#x90A3;&#x4E9B;&#x64CD;&#x4F5C;&#xFF1F;"></a>&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x2014;&#x2014;&#x201C;.&#x201D;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x5728;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#xFF0C;&#x7A76;&#x7ADF;&#x505A;&#x4E86;&#x90A3;&#x4E9B;&#x64CD;&#x4F5C;&#xFF1F;</h2><p>&#x5728;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x78B0;&#x5230;&#x201D;.&#x201D;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BE5;&#x600E;&#x4E48;&#x529E;&#xFF1F;</p>
+<p>&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5F88;&#x6709;&#x5FC5;&#x8981;&#xFF0C;&#x5B83;&#x7275;&#x626F;&#x5230;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<p>&#x7B2C;&#x4E00;&#x2014;&#x2014;&#x4E0A;&#x6587;&#x7684;this</p>
+<p>&#x7B2C;&#x4E8C;&#x2014;&#x2014;&#x53C2;&#x6570;&#x7A76;&#x7ADF;&#x662F;&#x6309;&#x503C;&#xFF0C;&#x8FD8;&#x662F;&#x6309;&#x5F15;&#x7528;&#x4F20;&#x9012;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var obj = {</div><div class="line">  a: 1</div><div class="line">};</div><div class="line">function some ( o ) {</div><div class="line">  o.a = 2;</div><div class="line">  o = {};</div><div class="line">  o.a = 3;</div><div class="line">}</div><div class="line">some(obj);</div><div class="line">console.log(obj.a);//2</div></pre></td></tr></table></figure>
+<p>&#x7F51;&#x4E0A;&#x5F88;&#x591A;&#x89E3;&#x91CA;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x89C9;&#x5F97;&#xFF0C;&#x6700;&#x5173;&#x952E;&#x7684;&#xFF0C;&#x8FD8;&#x662F;&#x201D;.&#x201D;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x7A76;&#x7ADF;&#x662F;&#x600E;&#x4E48;&#x4E2A;&#x4E1C;&#x897F;&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;&#x3002;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习总结/" rel="tag"># 学习总结</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/05/小薇学院——任务一/" rel="next" title="小薇学院——任务一">
+                <i class="fa fa-chevron-left"></i> 小薇学院——任务一
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="王说说" />
+          <p class="site-author-name" itemprop="name">王说说</p>
+           
+              <p class="site-description motion-element" itemprop="description">接受，然后改变</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域"><span class="nav-number">1.</span> <span class="nav-text">作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态作用域"><span class="nav-number">1.1.</span> <span class="nav-text">静态作用域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文"><span class="nav-number">2.</span> <span class="nav-text">执行上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法环境——变量环境"><span class="nav-number">3.</span> <span class="nav-text">词法环境——变量环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域链"><span class="nav-number">4.</span> <span class="nav-text">作用域链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体实现"><span class="nav-number">5.</span> <span class="nav-text">具体实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">6.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this"><span class="nav-number">7.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个问题——“-”操作符，在内部实现，究竟做了那些操作？"><span class="nav-number">8.</span> <span class="nav-text">一个问题——“.”操作符，在内部实现，究竟做了那些操作？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王说说</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
