@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>播放器</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+			font-size: 0;
+		}
+		.box{
+			display: inline-block;
+
+		}
+		.buttonbar{
+			height:34px;
+
+		}
+		.cav-play,.cav-sound,.cav-screen,.progress-bar,.soundP-bar{
+			display: inline-block;
+		}
+		.play-time{
+			display: inline-block;
+			height:34px;
+			width:11%;
+			font-size: 13px;
+			font-weight:bold;
+			line-height: 34px;
+			color:#888;
+			vertical-align: top;
+		}
+		.progress-bar{
+			position:relative;
+			height:2px;
+			padding:16px 0;
+			margin:0 10px;
+			width:55%;
+
+
+		}
+		.progress.All{
+
+			width:100%;
+			border-top:2px solid #ccc;
+			position: absolute;
+
+
+
+		}
+		.progress.Now{
+			border-top:2px solid #AA1341;
+			z-index: 9;
+			position: absolute;
+		}
+
+		.soundP-bar{
+			position:relative;
+			height:2px;
+			padding:16px 0;
+			margin:0 10px;
+			width:85px;
+
+
+		}
+		.sound.all{
+
+			width:100%;
+			border-top:2px solid #ccc;
+			position: absolute;
+
+
+
+		}
+		.sound.now{
+			border-top:2px solid #AA1341;
+			z-index: 9;
+			position: absolute;
+		}
+		.button{
+			height:10px;
+			width:10px;
+			border-radius:50%;
+			border:1px solid #717171;
+			position:absolute;
+			background-color: white;
+			z-index: 10;
+
+			top:12px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<video src="http://ojekrccly.bkt.clouddn.com/%E9%B9%AC.mp4" controls="" autoplay=""></video>
+		<div class="buttonbar">
+			<canvas class="cav-play"></canvas>
+			<div class="play-time"></div>
+			<!-- <canvas class="progress-bar">
+
+				<div class="button"></div>
+			</canvas> 尝试画布，扑街-->
+			<div class="progress-bar">
+				<div class="progress All"></div>
+				<div class="progress Now"></div>
+				<div class="button progress-button"></div>
+			</div>
+			<canvas class="cav-sound"></canvas>
+			<div class="soundP-bar">
+				<div class="sound all"></div>
+				<div class="sound now"></div>
+				<div class="button sound-button"></div>
+			</div>
+			<canvas class="cav-screen"></canvas>
+
+
+		</div>
+	</div>
+	<script>
+	 	var buttonBar = document.querySelector(".buttonbar");
+		var video = document.querySelector("video");
+		var play = document.querySelector(".cav-play");
+		var playTime = document.querySelector(".play-time");
+		var iconSound = document.querySelector(".cav-sound");
+		var iconScreen = document.querySelector(".cav-screen");
+		var progressBar = document.querySelector(".progress-bar");
+		var progressAll = document.querySelector(".progress.All");
+		var progressNow = document.querySelector(".progress.Now");
+		var buttonProgress = document.querySelector(".button.progress-button");
+		var soundPBar = document.querySelector(".soundP-bar");
+		var soundAll = document.querySelector(".sound.all");
+		var soundNow = document.querySelector(".sound.now");
+		var soundButton = document.querySelector(".button.sound-button");
+
+		var allTime ;
+		var allTimeSec;
+		var allTimeMin;
+		var currentTime ;
+		var currentTimeSec = "00";
+		var currentTimeMin  = 0;
+		var theProgressLength = 0;
+		var x = 10;
+		var y = 10;		//x,y用于进度条的控制
+		var m ;
+		var currentSound = 1 ;
+
+
+
+		play.width = 34;
+		play.height = 34;
+		iconSound.width = 34;
+		iconSound.height = 34;
+		iconScreen.width = 34;
+		iconScreen.height = 34;
+
+
+		(function(){
+			var ctx = play.getContext("2d");
+			ctx.clearRect(0,0,34,34);
+			ctx.lineWidth = 4;
+			ctx.beginPath();
+			ctx.moveTo(13,10);
+			ctx.lineTo(13,23);
+
+			ctx.moveTo(20,10);
+			ctx.lineTo(20,23);
+			ctx.closePath();
+			ctx.stroke();
+		})();
+		(function(){
+			var ctx = iconSound.getContext("2d");
+			ctx.clearRect(0,0,34,34);
+			ctx.beginPath();
+			ctx.moveTo(8,15);
+			ctx.lineTo(8,19);
+			ctx.lineTo(12,19);
+			ctx.lineTo(17,24);
+			ctx.lineTo(17,9);
+			ctx.lineTo(12,15);
+			ctx.closePath();
+
+			ctx.fill();
+
+
+			ctx.beginPath();
+			ctx.lineWidth = 2;
+			ctx.arc(17,17,7,-Math.PI/2.5,Math.PI/2.5);
+			ctx.stroke();
+			ctx.closePath();
+
+			ctx.beginPath();
+			ctx.arc(17,17,3,-Math.PI/5,Math.PI/5);
+			ctx.stroke();
+			ctx.closePath();
+		})();
+		(function(){
+			var ctx = iconScreen.getContext("2d");
+			ctx.lineWidth = 2;
+			ctx.clearRect(0,0,34,34);
+			ctx.beginPath();
+			ctx.moveTo(8,14);
+			ctx.lineTo(8,8);
+			ctx.lineTo(14,8);
+			ctx.stroke();
+			ctx.closePath();
+
+			ctx.beginPath();
+			ctx.moveTo(8,20);
+			ctx.lineTo(8,26);
+			ctx.lineTo(14,26);
+			ctx.stroke();
+			ctx.closePath();
+
+			ctx.beginPath();
+			ctx.moveTo(20,26);
+			ctx.lineTo(26,26);
+			ctx.lineTo(26,20);
+			ctx.stroke();
+			ctx.closePath();
+
+			ctx.beginPath();
+			ctx.moveTo(26,14);
+			ctx.lineTo(26,8);
+			ctx.lineTo(20,8);
+			ctx.stroke();
+			ctx.closePath();
+		})();
+
+
+		//设置开始/暂停按钮
+		function pass(){
+			if(!video.paused){
+				(function(){
+					var ctx = play.getContext("2d");
+					ctx.clearRect(0,0,34,34);
+					ctx.beginPath();
+					ctx.moveTo(10, 10);
+					ctx.lineTo(23,17);
+					ctx.lineTo(10,23);
+					ctx.closePath();
+					ctx.fill();
+					video.pause();
+				})();
+			}else{
+				(function(){
+					var ctx = play.getContext("2d");
+					ctx.clearRect(0,0,34,34);
+					ctx.lineWidth = 4;
+					ctx.beginPath();
+					ctx.moveTo(13,10);
+					ctx.lineTo(13,23);
+
+					ctx.moveTo(20,10);
+					ctx.lineTo(20,23);
+					ctx.closePath();
+					ctx.stroke();
+					video.play();
+				})();
+			}
+		}
+
+		play.addEventListener("click", pass);
+
+		//设置显示播放时间
+
+		video.addEventListener("loadedmetadata", function(){
+			// progressBar.width = 0.6 * video.clientWidth;
+			// progressBar.height= 34;
+			// theProgressLength = progressBar.width - 20;
+			// progressB();试着用画布，发现，真的难，还是用div吧
+
+			allTime = video.duration;
+			allTimeSec = Math.floor(allTime % 60);
+			allTimeMin = Math.floor(allTime / 60);
+
+			soundButton.style.left = soundAll.offsetWidth * video.volume + "px";
+
+			playTime.innerHTML = currentTimeMin + ":" + currentTimeSec + " / " + allTimeMin + ":" + allTimeSec;
+		});
+
+		video.addEventListener("timeupdate",timetime)
+		function timetime(){
+
+
+ 			var currentTime = video.currentTime;
+
+ 			currentProgress()
+			var currentTimeSec = Math.floor(currentTime % 60);
+			var currentTimeMin = Math.floor(currentTime / 60);
+			if(currentTimeSec < 10){
+				currentTimeSec = "0" +currentTimeSec;
+			}
+
+			playTime.innerHTML = currentTimeMin + ":" + currentTimeSec + " / " + allTimeMin + ":" + allTimeSec;
+		}
+
+
+
+		//画声音的那个图标，并且添加静音/不静音事件
+
+
+		function muted(){
+			var ctx = iconSound.getContext("2d");
+
+				ctx.clearRect(0,0,34,34);
+				ctx.beginPath();
+				ctx.moveTo(8,15);
+				ctx.lineTo(8,19);
+				ctx.lineTo(12,19);
+				ctx.lineTo(17,24);
+				ctx.lineTo(17,9);
+				ctx.lineTo(12,15);
+				ctx.closePath();
+
+				ctx.fill();
+
+
+				ctx.beginPath();
+				ctx.lineWidth = 2;
+				ctx.arc(17,17,7,-Math.PI/2.5,Math.PI/2.5);
+				ctx.stroke();
+				ctx.closePath();
+
+				ctx.beginPath();
+				ctx.arc(17,17,3,-Math.PI/5,Math.PI/5);
+				ctx.stroke();
+				ctx.closePath();
+
+
+				ctx.beginPath();
+				ctx.moveTo(8,9);
+				ctx.lineTo(24,24);
+				ctx.stroke();
+				ctx.closePath();
+				video.muted = true;
+		}
+		function nomuted (){
+			var ctx = iconSound.getContext("2d");
+			ctx.clearRect(0,0,34,34);
+				ctx.beginPath();
+				ctx.moveTo(8,15);
+				ctx.lineTo(8,19);
+				ctx.lineTo(12,19);
+				ctx.lineTo(17,24);
+				ctx.lineTo(17,9);
+				ctx.lineTo(12,15);
+				ctx.closePath();
+
+				ctx.fill();
+
+
+				ctx.beginPath();
+				ctx.lineWidth = 2;
+				ctx.arc(17,17,7,-Math.PI/2.5,Math.PI/2.5);
+				ctx.stroke();
+				ctx.closePath();
+
+				ctx.beginPath();
+				ctx.arc(17,17,3,-Math.PI/5,Math.PI/5);
+				ctx.stroke();
+				ctx.closePath();
+				video.muted = false;
+		}
+
+		function iconVoice(){
+
+
+			if(!video.muted){
+
+				muted();
+
+			}else{
+
+				nomuted();
+
+			}
+
+		}
+
+		iconSound.addEventListener("click",iconVoice);
+		video.addEventListener("volumechange", function(){
+			if(video.volume == 0){
+				muted();
+				m = 0;
+				return;
+			}
+			if(m == 0 && video.volume != 0){
+				nomuted();
+			}
+			m = 1;
+		});
+
+		//全屏开关
+
+		function screen(){
+			var ctx = iconScreen.getContext("2d");
+			ctx.clearRect(0,0,34,34);
+			ctx.lineWidth = 2;
+
+			if(video.width == window.screen.width){
+				if (document.exitFullscreen) {
+					document.exitFullscreen();
+				}
+				else if (document.mozCancelFullScreen) {
+					document.mozCancelFullScreen();
+				}
+				else if (document.webkitCancelFullScreen) {
+					document.webkitCancelFullScreen();
+				}
+				else if (document.msExitFullscreen) {
+					document.msExitFullscreen();
+				}
+				ctx.beginPath();
+				ctx.moveTo(8,14);
+				ctx.lineTo(14,14);
+				ctx.lineTo(14,8);
+				ctx.stroke();
+				ctx.closePath();
+
+				ctx.beginPath();
+				ctx.moveTo(8,20);
+				ctx.lineTo(14,20);
+				ctx.lineTo(14,26);
+				ctx.stroke();
+				ctx.closePath();
+
+				ctx.beginPath();
+				ctx.moveTo(20,26);
+				ctx.lineTo(20,20);
+				ctx.lineTo(26,20);
+				ctx.stroke();
+				ctx.closePath();
+
+				ctx.beginPath();
+				ctx.moveTo(26,14);
+				ctx.lineTo(20,14);
+				ctx.lineTo(20,8);
+				ctx.stroke();
+				ctx.closePath();
+
+			}
+			else {
+
+				if(video.requestFullscreen) {
+					video.requestFullscreen();
+				} else if(video.mozRequestFullScreen) {
+					video.mozRequestFullScreen();
+				} else if(video.webkitRequestFullscreen) {
+					video.webkitRequestFullscreen();
+				} else if(video.msRequestFullscreen) {
+					video.msRequestFullscreen();
+				}
+				console.log(video);
+				//video.removeAttribute("controls");
+				video.controls=false;
+
+				ctx.beginPath();
+				ctx.moveTo(8,14);
+				ctx.lineTo(8,8);
+				ctx.lineTo(14,8);
+				ctx.stroke();
+				ctx.closePath();
+
+				ctx.beginPath();
+				ctx.moveTo(8,20);
+				ctx.lineTo(8,26);
+				ctx.lineTo(14,26);
+				ctx.stroke();
+				ctx.closePath();
+
+				ctx.beginPath();
+				ctx.moveTo(20,26);
+				ctx.lineTo(26,26);
+				ctx.lineTo(26,20);
+				ctx.stroke();
+				ctx.closePath();
+
+				ctx.beginPath();
+				ctx.moveTo(26,14);
+				ctx.lineTo(26,8);
+				ctx.lineTo(20,8);
+				ctx.stroke();
+				ctx.closePath();
+			}
+
+
+
+		}
+		iconScreen.addEventListener("click",screen);
+		//解决全屏问题
+
+
+
+
+
+		//进度条
+		// function progressB(){
+		// 	var ctx = progressBar.getContext("2d");
+		// 	ctx.strokeStyle = "#D8D8D8";
+		// 	ctx.beginPath();
+		// 	ctx.moveTo(10,17);
+		// 	ctx.lineTo(progressBar.clientWidth-10,17);
+		// 	ctx.stroke()
+		// }
+
+
+		// function currentProgress(){
+		// 	var ctx = progressBar.getContext("2d");
+		// 	begin = end;
+		// 	end = theProgressLength * (video.currentTime / video.duration) + 10;
+
+		// 	ctx.beginPath();
+		// 	ctx.lineWidth = 2;
+		// 	ctx.strokeStyle = "#FF000A";
+		// 	ctx.moveTo(begin,17);
+		// 	ctx.lineTo(end,17);
+		// 	ctx.clearRect()
+		// 	ctx.stroke();
+		// 	ctx.closePath();
+		// }
+		function currentProgress(){
+			progressNow.style.width = progressAll.offsetWidth * (video.currentTime / video.duration) + "px";
+			buttonProgress.style.left = progressAll.offsetWidth * (video.currentTime / video.duration) + "px";
+		}
+
+		buttonProgress.onmousedown = function(){
+			video.pause();
+			document.onmousemove = function(){
+
+				x = event.clientX;
+
+
+				y = x - progressBar.offsetLeft;
+				if(y > progressBar.offsetWidth){
+					y = progressBar.offsetWidth;
+				}else if(y < 0){
+					y = 0;
+
+
+				}
+
+
+				// buttonProgress.style.left = buttonProgress.offsetLeft + Math.floor(x - y) + "px";
+				buttonProgress.style.left = y  + "px";
+				// video.currentTime = (buttonProgress.offsetLeft + x - y)/progressAll.offsetWidth * video.duration;
+				video.currentTime = y/progressAll.offsetWidth * video.duration;
+				timetime();
+
+			}
+		}
+		buttonProgress.onmouseup = function(){
+			document.onmousemove = null;
+			video.play();
+
+
+		}
+
+		//音量条
+
+
+		soundButton.onmousedown = function(){
+			document.onmousemove = function(){
+				x = event.clientX;
+				y = x - soundPBar.offsetLeft;
+				if(y > soundPBar.offsetWidth){
+					y = soundPBar.offsetWidth;
+				}else if(y < 0){
+					y = 0;
+					video.muted = true;
+				}
+
+				soundButton.style.left = y + "px";
+				video.volume = y/soundAll.offsetWidth * 1;
+			}
+			document.onmouseup = function(){
+				document.onmousemove = null;
+			}
+		}
+
+
+	</script>
+</body>
+</html>

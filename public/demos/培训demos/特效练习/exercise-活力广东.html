@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>活力广东</title>
+	<link rel="stylesheet" href="css/hlgdBig.css" media="(min-width:664px)">
+
+	<style>
+		@keyframes enter{
+			100%{
+				transform:scale(0.8);
+			}
+		}
+
+		@keyframes out{
+			0%{
+				
+			}
+			16%{
+				transform:scale(1.15) translateY(-20px) ;
+				
+			}
+			30%{
+				transform:scale(0.83) translateY(0) ;
+			
+			}
+			42%{
+				transform:scale(1.1) translateY(17px);
+				
+			}
+			53%{
+				transform:scale(0.9) translateY(0);
+			
+			}
+			63%{
+				transform:scale(1.07) translateY(-10px);
+				
+			}
+			71%{
+				transform:scale(0.95) translateY(0);
+			
+			}
+			78%{
+				transform:scale(1.03) translateY(8px);
+				
+			}
+			84%{
+				transform:scale(0.97) translateY(0);
+				
+			}
+			89%{
+				transform:scale(1.02) translateY(-5px);
+				
+			}
+			93%{
+				transform:scale(0.99) translateY(0);
+				
+			}
+			96%{
+				transform:scale(1.01) translateY(3px);
+				
+			}
+			100%{
+				transform:scale(1) translateY(0);
+				
+			}
+
+		}
+
+		body{
+			padding:0;
+			margin:0;
+			font-size:0;
+			background: url(img/bg.png);
+			background-size:100%;
+		}
+
+		@media screen and (max-width: 663px){
+			.top{
+				height:10px;
+			}
+			.box{
+				
+				height:570px;
+				width: 341px;
+				transform-style: preserve-3d;
+				perspective-origin:4000;
+				margin:auto;
+				/*overflow: hidden;*/
+			}
+			.item{
+				height:90px;
+				width:141px;
+				border-radius:5px;
+				
+				display: inline-block;
+				margin-left:5px;
+				
+				margin-bottom:5px;
+				vertical-align: top;
+
+			}
+			.item.item-sh{
+				
+				width:190px;
+			}
+			.itemsmall{
+				height:90px;
+				width:141px;
+				border-radius:5px;
+				
+				display: inline-block;
+				margin-left:5px;
+				
+				margin-bottom:5px;
+				vertical-align: top;
+			transform:scale(0.8);
+		}
+		}
+		
+		.item>img{
+			width:100%;
+			height:100%;
+			border-radius:5px;
+		}
+		.enter{
+			animation:enter 3s;
+
+
+		}
+		.out{
+			animation:out 3s;
+			transform-origin: 0 bottom;
+		}
+
+		
+		
+
+		
+	</style>
+</head>
+<body>
+	<div class="top"></div>
+	<div class="box">
+		<div class="item item-bh item-sh i1 out">
+			<img src="img/admin.png" alt="">
+		</div>
+		<div class="item i2 out">
+			<img src="img/axam.png" alt="">
+		</div>
+		<div class="item item-sh i3 out">
+			<img src="img/contract.png" alt="">
+		</div>
+		<div class="item i4 out">
+			<img src="img/guide.png" alt="">
+		</div>
+
+		<div class="item item-bh item-sh i5 out">
+			<img src="img/expo.png" alt="">
+		</div>
+		<div class="item i6 out">
+			<img src="img/hall.png" alt="">
+		</div>
+		<div class="item i7 out">
+			<img src="img/sina.png" alt="">
+		</div>
+		<div class="item item-sh i8 out">
+			<img src="img/sjzx.png" alt="">
+		</div>
+
+		<div class="item item-bh i9 out">
+			<img src="img/visit.png" alt="">
+		</div>
+		<div class="item item-sh i10 out">
+			<img src="img/traval.png" alt="">
+		</div>
+		<div class="item i11 out">
+			<img src="img/tencent.png" alt="">
+		</div>
+		<div class="item item-sh i12 out">
+			<img src="img/weico.png" alt="">
+		</div>
+	</div>
+	<script>
+		var items = document.querySelectorAll(".item");
+
+		for(var i = 0;i < items.length;i++){
+			items[i].onmouseenter = function(){
+
+				this.classList.remove("out");
+				// this.classList.remove("item");
+				// this.classList.add("itemsmall");
+				this.classList.add("enter");
+
+				
+			}
+			items[i].onmouseout = function(){
+				this.classList.remove("enter");
+				this.classList.add("out");
+			}
+		}
+	</script>
+</body>
+</html>

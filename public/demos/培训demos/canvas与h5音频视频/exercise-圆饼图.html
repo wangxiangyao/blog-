@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圆饼图</title>
+</head>
+<body>
+	<canvas>lala</canvas>
+
+	<script>
+		var cav = document.querySelector("canvas");
+		cav.width = 400;
+		cav.height = 400;
+		cav.style.backgroundColor = "#aaa";
+
+		var cts = cav.getContext("2d");
+		var begin = -Math.PI/2;
+		var end = -Math.PI/2;
+		var textBeginX = 0;
+		var textBeginY = 0;
+		
+
+		var angle = 0;
+		var txt;
+
+		var data = [{"value":2,"color":"red","title":"应届生"},
+					{"value":3,"color":"blue","title":"社会招聘"},
+					{"value":4,"color":"green","title":"员工推荐"},
+					{"value":1,"color":"#ff0","title":"公开课"}];
+
+		for(var i = 0;i < data.length;i++){
+			begin = end;
+			end = end + data[i].value / 5 * Math.PI;
+			cts.fillStyle = data[i].color;
+			txt = data[i].title;
+
+			cts.beginPath();
+			cts.moveTo(200,200);
+			cts.arc(200,200,100,begin,end,false);
+			cts.fill();
+
+			angle = begin + data[i].value / 5 * Math.PI / 2;
+			textBeginX = 200 + 100 * Math.cos(angle);
+			textBeginY = 200 + 100 * Math.sin(angle);
+
+
+			if(textBeginX >= 200){
+				if(textBeginY >= 200){
+					cts.textAlign = "start";
+					cts.textBaseLine = "top";
+					cts.fillText(txt, textBeginX+5, textBeginY);
+				}
+				if(textBeginY < 200){
+					cts.textAlign = "start";
+					cts.textBaseLine = "bottom";
+					cts.fillText(txt, textBeginX+5, textBeginY);
+				}
+			}else if(textBeginX < 200){
+				if(textBeginY >= 200){
+					cts.textAlign = "end";
+					cts.textBaseLine = "top";
+					cts.fillText(txt, textBeginX-5, textBeginY);
+				}
+				if(textBeginY < 200){
+					cts.textAlign = "end";
+					cts.textBaseLine = "bottom";
+					cts.fillText(txt, textBeginX-5, textBeginY);
+				}
+			}
+
+
+		}
+	</script>
+
+	
+</body>
+</html>

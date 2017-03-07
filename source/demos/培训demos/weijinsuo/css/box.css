@@ -1,0 +1,75 @@
+#product .page .box.use {
+	background-color: #e9232c;
+	color: #fff;
+}
+#product .page .box.use .box-left::before {
+	content: "\e915";
+	font-family: "tubiao";
+	width:30px;
+	height:40px;
+	display: block;
+	position:absolute;
+	color: #fff;
+	font-size: 30px;
+	left: 0;
+	top: -6px;
+}
+#product .page .box.use .box-right .content.down strong{
+	color: #fff;
+}
+#product .page .box.use .box-right .content.up span {
+	display: none;
+}
+
+
+#product .page .box.clearing, #product .page .box.repayment, #product .page .box.full, #product .page .box.accomplish {
+	background-color: #e0e0e0;
+}
+#product .page .box.clearing .box-left::after {
+	content: "\e926";
+	position: absolute;
+	font-family: "tubiao";
+	display: block;
+	width:100px;
+	height:100%;
+	font-size:100px;
+	right:0;
+	top:0;
+	color: #e9232c;
+}
+#product .page .box.repayment .box-left::after {
+	content: "\e925";
+	position: absolute;
+	font-family: "tubiao";
+	display: block;
+	width:100px;
+	height:100%;
+	font-size:100px;
+	right:0;
+	top:0;
+	color: #e9232c;
+}
+#product .page .box.full .box-left::after {
+	content: "\e927";
+	position: absolute;
+	font-family: "tubiao";
+	display: block;
+	width:100px;
+	height:100%;
+	font-size:100px;
+	right:0;
+	top:0;
+	color: #e9232c;
+}
+#product .page .box.accomplish .box-left::after {
+	content: "\e928";
+	position: absolute;
+	font-family: "tubiao";
+	display: block;
+	width:100px;
+	height:100%;
+	font-size:100px;
+	right:0;
+	top:0;
+	color: #e9232c;
+}

@@ -1,0 +1,236 @@
+:root {
+	--头部背景颜色: #ffd52b;
+	--头部文字颜色: #7A4624;
+	--头部悬停或选中背景颜色: #ffe36f;
+	--头部悬停或选中底边框颜色: #7a4624;
+}
+* {
+	box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+}
+body,div,header{
+	font-size: 0;
+	margin:0;
+	padding:0;
+}
+body {
+	background-color: #f7f7f7;
+}
+.right {
+	float:right;
+}
+.left {
+	float:left;
+}
+.clearfix::before,.clearfix::after {
+	content:'';
+	display: table;
+}
+.clearfix::after {
+	clear:both;
+}
+header {
+	background-color: var(--头部背景颜色);
+	min-width: 820px;
+	padding-left:14%;
+}
+header img {
+	vertical-align: top;
+}
+header .item {
+	border-bottom:1px solid transparent;
+	border-top: 2px solid transparent;
+	display: inline-block;
+	vertical-align: top;
+}
+header .item .h-text {
+	height:80px;
+	line-height: 80px;
+	font-size:16px;
+	font-weight: bolder;
+	color: var(--头部文字颜色);
+	text-decoration: none;
+	padding-left:15px;
+	padding-right:15px;
+}
+header .item:hover {
+	background-color: var(--头部悬停或选中背景颜色);
+	border-bottom:3px solid var(--头部悬停或选中底边框颜色);
+	border-top-width: 0;
+}
+section {
+	width:960px;
+	margin:0 auto;
+	padding-top:9px;
+	padding-bottom: 9px;
+}
+section .box-left {
+	float:left;
+}
+section .box-left .item {
+	width:640px;
+	background-color: #fff;
+	padding:9px 20px;
+	margin-top:9px;
+	margin-bottom:9px;
+}
+section .box-left .author {
+	padding:9px 0;
+}
+section .box-left .author .user-icon .user-img{
+	width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    padding: 0;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+section .box-left .user-id {
+	font-size: 14px;
+	color: #300;
+	vertical-align: middle;
+}
+section .box-left .author .gender {
+	vertical-align: top;
+	display: inline-block;
+	width: 32px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 10px;
+    text-align: center;
+    padding-left: 12px;
+    margin-top: 10px;
+    margin-left: 8px;
+    color: #fff;
+    background-size: cover;
+}
+section .box-left .author .gender.female {
+	background-image: url(../img/nearby_gender_female.png);
+}
+section .box-left .author .gender.male {
+	background-image: url(../img/nearby_gender_male.png);
+}
+
+section .box-left .content {
+	padding:9px 0;
+	font-size:16px;
+    line-height: 1.8;
+    word-wrap: break-word;
+    color: #333;
+}
+section .box-left .starts {
+	padding: 9px 0;
+	font-size: 12px;
+	color:#999;
+}
+section .box-left .starts .starts-num, section .box-left .starts .starts-comment {
+	color: #999;
+}
+section .box-left .icon-button .icon-list i {
+	width:30px;
+	height:30px;
+	display: inline-block;
+	margin-left:5px;
+	margin-right:5px;
+	cursor:pointer;
+}
+section .box-left .icon-button .left .up {
+	background: url(../img/funny.png);
+}
+section .box-left .icon-button .left .down {
+	background: url(../img/not_funny.png);
+}
+section .box-left .icon-button .left .comment {
+	background: url(../img/comment.png);
+}
+section .box-left .icon-button .icon-list.right i {
+	padding:3px;
+}
+section .box-left .icon-button .right .icon-share{
+	background: url(../img/icongroup.png);
+}
+section .box-left .icon-button .right .wechart {
+	width:30px;
+	height:30px;
+	display: inline-block;
+	margin-left:5px;
+	margin-right:5px;
+	padding:3px;
+	cursor:pointer;
+	background-position: 0 -77px;
+	position: relative;
+
+}
+.wechart:hover .qrcode {
+	display: block;
+}
+.wechart .qrcode {
+	display: none;
+	position: absolute;
+	bottom:100%;
+	left:0;
+	width:160px;
+	height:210px;
+	padding:10px;
+	font-size:10px;
+	text-align: center;
+	border: 1px solid #dedede;
+	color:#999;
+	background-color: #fff;
+}
+section .box-left .icon-button .right .qq {
+	background-position: 0 -149px;
+}
+section .box-left .icon-button .right .qqzone {
+	background-position: 0 -124px;
+}
+section .box-left .icon-button .right .weibo {
+	background-position: 0 -100px;
+}
+section .box-left .main-text {
+	display: block;
+	padding:9px 0;
+	font-size:16px;
+    line-height: 1.8;
+    word-wrap: break-word;
+}
+section .box-left .main-text .god {
+	display: inline-block;
+	height: 15px;
+    width: 16px;
+    background-image: url(../img/cmt-god.png);
+    background-size: contain;
+    vertical-align: middle;
+}
+section .box-left .main-text .comment-text {
+	font-size:14px;
+	color:#300;
+}
+section .box-left .main-text .likenum {
+	display: inline-block;
+	line-height: 30px;
+}
+section .box-left .main-text .likenum img {
+	width:13px;
+	height:13px;
+	margin-right:10px;
+	cursor:pointer;
+}
+section .box-left .main-text .likenum .num {
+	font-size: 14px;
+	font-weight: bolder;
+	color:#b4b4b4;
+}
+
+
+
+
+
+
+section .box-right {
+	float:right;
+	width:35px;
+	height:35px;
+}

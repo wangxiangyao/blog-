@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	比较版本号</title>
+</head>
+<body>
+	<script>	
+		//版本号的话，一般都是这样"10.2.1"以"."作为分隔符，也可能是这样"10.2.20170306"
+		//思路：
+		//1.判断输入——是否为空，是否合法
+		//2.将字符串分割为数组
+		//3.比较算法：两数组逐位比较，遇到大的，就退出循环。
+
+		var partten = /^[v]{0,1}([0-9\.]+$)/i;
+
+		function versionCompare(v1, v2) {
+			if ( !(v1 && v2) ) {
+				console.log('输入不合法');//此处主要筛选空输入，数字0输入，总之就是，各种隐式转换为false的情况，都会被筛选掉。
+				return;
+			}
+
+			//转换为数组
+			function toArr (a) {
+				if( typeof a !== "string" ) {
+					a = a.toString();
+				};
+
+				a = a.match(partten);
+				
+				try {
+					a = a[1].split(".");
+				} catch (err) {
+					console.log("输入不合法");
+				}
+				
+				return a;
+			}
+
+			//比较
+			function theBiger( arr1, arr2 ) {
+				if ( !(arr1 && arr2) ) {
+					return "无法比较";
+				}
+				let len1 = arr1.length,
+					len2 = arr2.length;
+				let len = Math.min(len1, len2);
+				for( let i = 0; i < len; i++ ) {
+					let a = Number(arr1[i]),
+						b = Number(arr2[i]);
+					if ( a > b ) {
+						return arr1.join(".");
+					} else if ( a < b ) {
+						return arr2.join(".");
+					};
+				};
+
+				//前边都一样，谁长谁大
+				if (len1 > len2) {
+					return arr1.join(".");
+				} else if ( len1 < len2 ) {
+					return arr2.join(".");
+				};
+				
+				return "版本相同";
+			}
+
+			console.log("较大者：", theBiger(toArr(v1), toArr(v2)));
+
+		}
+
+
+
+		//测试用例:
+
+		//正常功能：
+		versionCompare('10.2.1', '10.3.1');
+		versionCompare('110.1123.545', '110.1123.878');
+		versionCompare('10.2.1', '10.1.0.2');
+		versionCompare('v10.1.1', 'V10.1.1');//带V且不区分大小写。
+		versionCompare('1.1.1', '1.1.1.1');//比较长短
+
+		//异常输入
+		versionCompare(1.1, 1.2);
+		versionCompare(function() {
+			console.log("lalal")
+		}, '1.0.0');
+
+	</script>
+</body>
+</html>

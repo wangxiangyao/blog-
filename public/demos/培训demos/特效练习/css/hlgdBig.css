@@ -1,0 +1,38 @@
+	.top{
+		height:156px;
+	}
+	.box{
+		width:62.75%;
+		height:400px;
+		min-width: 641px;
+		// overflow: hidden;
+		margin:auto;
+	}
+	.item{
+		height:32%;
+		width:20%;
+		border-radius:10px;
+		
+		display: inline-block;
+		margin-left:1%;
+		margin-bottom:1%;
+		vertical-align: top;
+	}
+	.item.item-bh{
+		height:32%;
+		width:37%;
+		
+		
+		margin:0;
+	}
+	.itemsmall{
+		transform:scale(0.8);
+		height:32%;
+		width:20%;
+		border-radius:10px;
+		
+		display: inline-block;
+		margin-left:1%;
+		margin-bottom:1%;
+		vertical-align: top;
+	}

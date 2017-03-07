@@ -1,0 +1,23 @@
+#carousel-example-generic>.carousel-inner>.item>img{
+	display: none;
+}
+#carousel-example-generic>.carousel-inner>.item {
+	background-size: cover;
+	background-position: center;
+	height:410px;
+}
+#carousel-example-generic>.carousel-inner>.item:first-child {
+	background-image: url(../image/slide_01_2000x410.jpg);
+}
+#carousel-example-generic>.carousel-inner>.item:nth-child(2) {
+	background-image: url(../image/slide_02_2000x410.jpg);
+}
+#carousel-example-generic>.carousel-inner>.item:nth-child(3) {
+	background-image: url(../image/slide_03_2000x410.jpg);
+}
+#carousel-example-generic>.carousel-inner>.item:nth-child(4) {
+	background-image: url(../image/slide_04_2000x410.jpg);
+}
+#news .Ahead li {
+	width: 25%;
+}
