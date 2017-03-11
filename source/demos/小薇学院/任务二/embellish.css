@@ -1,0 +1,123 @@
+.text--center {
+	text-align: center;
+}
+.text--right {
+	text-align: right;
+}
+.bg-gray {
+	background-color: rgba(147, 128, 108, 0.0980392)
+}
+.bg-black {
+	background-color: #444;
+}
+.bg-white {
+	background-color: #fff;
+}
+.bg-skyblue {
+	background-color: skyblue;
+}
+.gray {
+	color: rgba(147, 128, 108, 0.0980392);
+}
+.dim {
+	color: #ccc;
+}
+.white {
+	color: #fff;
+}
+.bold {
+	font-weight: bold;
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+p {
+	text-indent: 1em;
+}
+.quote {
+	border-left: 5px solid #ccc;
+	padding: 1em;
+}
+
+
+/* 导航修饰 */
+nav a {
+	color: #ccc;
+}
+nav a:hover {
+	color: #fff;
+}
+/* 导航结束 */
+
+
+
+/* 文章修饰 */
+article .author,
+article .time_publish {
+	margin-left: 1em;
+	color: #ccc;
+}
+article h2 {
+	font-size: 1.2em;
+}
+/* 文章修饰结束*/
+
+
+/* 相册 */
+.album-item {
+	width: 11em;
+	padding: .5em;
+	border: 1px solid #000;
+	text-align: center;
+}
+.album-item > img {
+	width: 100%;
+}
+/* 相册结束 */
+
+
+/*表格*/
+table, .table {
+	width: 100%;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+}
+thead {
+	text-align: center;
+}
+td {
+	padding: .3em;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+/*表格结束*/
+
+
+/* 表单 */
+/* 表单结束 */
+
+/* 按钮 */
+
+button, .button {
+	display: inline-block;
+	padding: .8em;
+	border-radius: .2em;
+	border: none;
+}
+.button--full {
+	width: 100%;
+}
+
+
+/* 按钮结束 */
+
+
+/**/
+/**/
+
+
+/**/
+/**/

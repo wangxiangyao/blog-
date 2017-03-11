@@ -1,0 +1,264 @@
+/* 基础栅格*/
+*, ::after, ::before {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+}
+
+/* 模拟粘性页脚 */
+.Site {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+.Site-content {
+	flex: 1;
+	padding: 1.5em 1.5em;
+}
+/* 模拟粘性页脚结束 */
+
+.content {
+	padding: 1.5em 1.5em 0;
+	width: 100%;
+}
+.grid {
+	display: flex;
+	flex-wrap: wrap;
+}
+.grid-cell {
+	flex: 1;
+}
+.demo {
+	width: 100%;
+	padding: .8em 1em 0;
+	border-radius: 3px;
+	background-color: hsla(31,15%,50%,.1);
+}
+.demo--space {
+	margin-bottom: 1em;
+}
+.demo::after {
+	content: "\U200b";
+	display: block;
+	margin-top: 1em;
+	height: 0;
+	visibility: hidden;
+}
+.text-center {
+	text-align: center;
+}
+.line {
+	margin-bottom: 1em;
+	border-bottom: 2px solid #eee;
+}
+.cut-off {
+	border: none;
+	text-align: center;
+	border-top: 3px solid #eee;
+}
+.cut-off > legend {
+	font-weight: 900;
+	font-size: 24px;
+}
+
+/* 修饰属性 */
+.grid--gutters {
+	margin: -1em 0 1em -1em;
+}
+.grid--gutters > .grid-cell {
+	padding: 1em 0 0 1em;
+}
+
+
+
+.grid--top {
+	align-items: flex-start;
+}
+.grid--bottom {
+	align-items: flex-end;
+}
+.grid--center {
+	align-items: center;
+}
+
+.grid-cell--top {
+	align-self: flex-start;
+}
+.grid-cell--bottom {
+	align-self: flex-end;
+}
+.grid-cell--center {
+	align-self: center;
+}
+
+
+/* 响应式设计 */
+.grid-cell--col12 {
+	flex: 0 0 100%;
+}
+.grid-cell--col6 {
+	flex: 0 0 50%;
+}
+.grid-cell--col4 {
+	flex: 0 0 33.3333%;
+}
+.grid-cell--col3 {
+	flex: 0 0 25%;
+}
+
+@media (max-width: 48em) {
+	.small-grid-cell--col12 {
+		flex: 0 0 100%;
+	}
+	.small-grid-cell--col6 {
+		flex: 0 0 50%;
+	}
+	.small-grid-cell--col4 {
+		flex: 0 0 33.3333%;
+	}
+	.small-grid-cell--col3 {
+		flex: 0 0 25%;
+	}
+}
+
+@media (min-width: 72em) {
+	.large-grid-cell--col12 {
+		flex: 0 0 100%;
+	}
+	.large-grid-cell--col6 {
+		flex: 0 0 50%;
+	}
+	.large-grid-cell--col4 {
+		flex: 0 0 33.3333%;
+	}
+	.large-grid-cell--col3 {
+		flex: 0 0 25%;
+	}
+}
+
+/* 以上，栅格系统结束 */
+
+
+
+/* 圣杯布局 */
+.HolyGrail {
+	display: flex;
+	min-height: 100vh;
+}
+
+.HolyGrail-body {
+	display: flex;
+	flex: 1;
+	padding: 1.5em;
+}
+
+/* 等高，定宽，流式居中三栏*/
+.HolyGrail-content {
+	flex: 1;
+	background-color: #ccc;
+}
+.HolyGrail-nav, .HolyGrail-ads {
+	flex: 0 0 12em;
+	padding: 1em;
+}
+.HolyGrail-nav {
+	order: -1;
+}
+
+/* 响应式 */
+@media (max-width: 48em) {
+	.HolyGrail-body {
+		flex-direction: column;
+		flex: 1;
+	}
+	.HolyGrail-content {
+		flex: 1;
+	}
+	.HolyGrail-nav, .HolyGrail-ads {
+		flex: none;
+	}
+}
+
+/* 圣杯布局结束*/
+
+/* 输入附加组件 */
+.inputGroup {
+	display: flex;
+}
+.inputGroup-item {
+	/*这里的是可以定制的*/
+	background-color: hsla(31, 15%, 50%, .1);
+	color: #666;
+	font: inherit;
+	font-weight: 500;
+}
+.inputGroup-field {
+	flex: 1;
+}
+.inputGroup-item, .inputGroup-field {
+	border: 1px solid hsla(31, 15%, 50%, .25);
+	padding: .5em .75em;
+}
+.inputGroup-item:first-child, .inputGroup-field:first-child {
+	border-radius: 2px 0 0 2px;
+}
+.inputGroup-item:last-child, .inputGroup-field:last-child {
+	border-radius: 0 2px 2px 0;
+}
+.inputGroup-item:not(:first-child), .inputGroup-field:not(:first-child) {
+	border-left: 0;
+}
+
+/* 输入附件组件结束 */
+
+/* 媒体对象 */
+.Media {
+	display: flex;
+	align-items: flex-start;
+	padding: .75em 1em 0;
+	margin-bottom: 1em;
+	background-color: rgba(189, 198, 198, 0.3);
+}
+.Media-figure {
+	margin-right: 1em;
+}
+.media-body {
+	flex: 1;
+}
+
+.image {
+	width: 70px;
+}
+.image--tiny {
+	width: 40px;
+}
+
+/* 媒体对象结束 */
+
+/* 垂直居中 */
+
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24em;
+}
+
+.Aligner-item {
+  max-width: 50%;
+  flex: 1;
+}
+
+.Aligner-item--fixed {
+	flex: none;
+}
+.Aligner-item--top {
+  align-self: flex-start;
+}
+
+.Aligner-item--bottom {
+  align-self: flex-end;
+}
+
+/* 导航 */

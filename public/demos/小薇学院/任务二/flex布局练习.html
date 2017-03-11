@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flex布局练习——栅格系统</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="Site">
+	<div class="content">
+
+		<fieldset class="cut-off">
+			<legend>以下是栅格布局演示</legend>
+		</fieldset>
+
+		<div class="grid grid--gutters text-center">
+			<div class="grid-cell">
+				<div class="demo">基础栅格练习</div>
+			</div>
+			<div class="grid-cell">
+				<div class="demo">这一行的三个都是自适应的</div>
+			</div>
+			<div class="grid-cell">
+				<div class="demo">flex: 1</div>
+			</div>
+		</div>
+		
+		<div class="line"></div>
+
+		<div class="grid grid--gutters text-center">
+			<div class="grid-cell grid-cell--col3 small-grid-cell--col12 large-grid-cell--col12">
+				<div class="demo">
+					这一组是设置了百分比的。
+				</div>
+			</div>
+			<div class="grid-cell grid-cell--col3 small-grid-cell--col4 large-grid-cell--col12">
+				<div class="demo">
+					为了演示，类名都写的长，平时简写定义
+				</div>
+			</div>
+			<div class="grid-cell">
+				<div class="demo">
+					当然也可以带个自行适应的，比如我
+				</div>
+			</div>
+			<div class="grid-cell grid-cell--col3 small-grid-cell--col4 large-grid-cell--col12">
+				<div class="demo">
+					布局很灵活
+				</div>
+			</div>
+		</div>
+
+		<div class="line"></div>
+
+		<div class="grid grid--gutters text-center">
+			<div class="grid-cell">
+				<div class="demo">当然也可以嵌套</div>
+			</div>
+			<div class="grid-cell">
+				<div class="demo">
+					<div class="grid grid--putters">
+						<div class="grid-cell">
+							<div class="demo">比如我，嵌套了好几层</div>
+						</div>
+						<div class="grid-cell">
+							<div class="demo">我也是</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="grid-cell">
+				<div class="demo">我们都是自适应的</div>
+			</div>
+		</div>
+
+		<fieldset class="cut-off">
+			<legend>华丽的分割线</legend>
+		</fieldset>
+
+		<div class="grid grid--gutters text-center">
+			<div class="grid-cell grid-cell--top">
+				<div class="demo">这一行模拟对齐方式</div>
+			</div>
+			<div class="grid-cell">
+				<div class="demo">
+					我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。我比较高。
+				</div>
+			</div>
+			<div class="grid-cell grid-cell--bottom">
+				<div class="demo">flex设置对齐很方便</div>
+			</div>
+			<div class="grid-cell grid-cell--center">
+				<div class="demo">我应该在中间</div>
+			</div>
+		</div>
+
+		<fieldset class="cut-off">
+			<legend>以下是圣杯布局演示</legend>
+		</fieldset>
+
+		<div class="HolyGrail">
+			<header></header>
+			<section class="HolyGrail-body">
+				<main class="HolyGrail-content"></main>
+				<nav class="HolyGrail-nav text-center">导航</nav>
+				<aside class="HolyGrail-ads text-center">广告</aside>
+			</section>
+			<footer></footer>
+		</div>
+
+		<fieldset class="cut-off">
+			<legend>以下是输入附加组件</legend>
+		</fieldset>
+		
+		<div class="grid grid--gutters">
+			<div class="grid-cell">
+				<div class="inputGroup">
+					<label class="inputGroup-item" for="input1">我在前边</label>
+					<input type="text" class="inputGroup-field" id="input1">
+				</div>
+			</div>
+			<div class="grid-cell">
+				<div class="inputGroup">
+					<input type="text" class="inputGroup-field" id="input2">
+					<label class="inputGroup-item" for="input2">后边</label>
+				</div>
+			</div>
+		</div>
+		<div class="grid grid--gutters">
+			<div class="grid-cell">
+				<div class="inputGroup">
+					<label class="inputGroup-item" for="input3">前后都有</label>
+					<input type="text" class="inputGroup-field" id="input3">
+					<label class="inputGroup-item" for="input3">前后都有</label>
+				</div>
+			</div>
+		</div>
+
+		<fieldset class="cut-off">
+			<legend>以下是粘性页脚</legend>
+		</fieldset>
+
+		<div class="Site">
+			<header>
+				<div class="demo">我模拟头部</div>
+			</header>
+			<div class="Site-content">
+				<div class="demo">我来模拟内容，内容明显不足以撑开知道底部，但是页脚还是粘在底部，这就是粘性页脚</div>
+			</div>
+			<footer>
+				<div class="demo">我模拟页脚</div>
+			</footer>
+		</div>
+
+		<fieldset class="cut-off">
+			<legend>以下是媒体对象</legend>
+		</fieldset>
+		
+		<div class="grid grid--gutters text-center">
+			<div class="grid-cell">
+				<div class="Media">
+					<img src="./我的头像.jpg" alt="小狗头像" class="Media-figure image">
+					<div class="Media-body">
+						<h3 class="Media-title">标题</h3>
+						<p>我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，</p>
+						<div class="Media">
+							<img src="我的头像.jpg" alt="小狗头像" class="Media-figure image--tiny">
+							<p class="Media-body">我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="grid-cell">
+				<div class="Media">
+					<img src="./我的头像.jpg" alt="小狗头像" class="Media-figure image">
+					<div class="Media-body">
+						<h3 class="Media-title">标题</h3>
+						<p>我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，</p>
+						<div class="Media">
+							<img src="我的头像.jpg" alt="小狗头像" class="Media-figure image--tiny">
+							<p class="Media-body">我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，我萌萌哒，</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<fieldset class="cut-off">
+			<legend>以下是垂直居中</legend>
+		</fieldset>
+		<div class="demo demo--space">
+			<div class="Aligner">
+				<div class="Aligner-item">
+					<div class="demo">中</div>
+				</div>
+				<div class="Aligner-item Aligner-item--top">
+					<div class="demo">上</div>
+				</div>
+				<div class="Aligner-item Aligner-item--bottom">
+					<div class="demo">下</div>
+				</div>
+			</div>
+		</div>
+		<div class="demo demo--space">
+			<div class="Aligner">
+				<div class="Aligner-item Aligner-item--fixed">
+					<div class="demo">中:我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，我居中了，</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

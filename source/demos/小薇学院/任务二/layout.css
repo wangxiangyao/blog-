@@ -1,0 +1,200 @@
+*, ::after, ::before {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+}
+
+.Site {
+	display: flex;
+	flex-direction: column;
+	min-width: 60em;
+}
+
+
+/* 栅格系统 */
+
+.grid--top {
+	align-items: flex-start;
+}
+.grid--bottom {
+	align-items: flex-end;
+}
+.grid--center {
+	align-items: center;
+}
+
+.grid-cell--top {
+	align-self: flex-start;
+}
+.grid-cell--bottom {
+	align-self: flex-end;
+}
+.grid-cell--center {
+	align-self: center;
+}
+
+
+/* 响应式设计 */
+.grid-cell--col12 {
+	flex: 0 0 100%;
+}
+.grid-cell--col8 {
+	flex: 0 0 83.3333333%;
+}
+.grid-cell--col6 {
+	flex: 0 0 50%;
+}
+.grid-cell--col4 {
+	flex: 0 0 33.3333%;
+}
+.grid-cell--col3 {
+	flex: 0 0 25%;
+}
+.grid-cell--col2 {
+	flex: 0 0 16.6666667%;
+}
+
+@media (max-width: 48em) {
+	.small-grid-cell--col12 {
+		flex: 0 0 100%;
+	}
+	.small-grid-cell--col6 {
+		flex: 0 0 50%;
+	}
+	.small-grid-cell--col4 {
+		flex: 0 0 33.3333%;
+	}
+	.small-grid-cell--col3 {
+		flex: 0 0 25%;
+	}
+}
+
+@media (min-width: 72em) {
+	.large-grid-cell--col12 {
+		flex: 0 0 100%;
+	}
+	.large-grid-cell--col6 {
+		flex: 0 0 50%;
+	}
+	.large-grid-cell--col4 {
+		flex: 0 0 33.3333%;
+	}
+	.large-grid-cell--col3 {
+		flex: 0 0 25%;
+	}
+}
+
+
+/* 栅格系统结束 */
+
+
+
+
+
+
+/* 头部样式 */
+.Site-header {
+	flex: none;
+}
+.Header {
+	padding: 1.5em 1.5em 0;
+	display: flex;
+}
+.Header-title {
+	flex: none;
+}
+.Header > nav {
+	flex: 1;
+}
+
+nav ul {
+	display: flex;
+	margin: 0;
+	height: 100%;
+}
+nav ul li {
+	flex: none;
+	margin-left: 1.8em;
+}
+.nav-ul--end {
+	justify-content: flex-end;
+}
+.nav-ul--center {
+	align-items: center;
+}
+/* 头部样式结束*/
+/* 往后细分类，响应式 */
+
+
+/* 主体部分布局 */
+.Site-content {
+	padding: 1.5em 1.5em 0;
+}
+.grid {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1em 1em 0;
+	margin-bottom: 1em;
+}
+.grid::after {
+	content: "\u200b";
+	display: block;
+	margin-top: 1em;
+	height: 0;
+	visibility: hidden;
+}
+.grid--col {
+	flex-direction: column;
+}
+.grid__gutters {
+	margin: -1em 0 1em -1em;
+}
+.grid__gutters > .grid-cell {
+	padding: 1em 0 0 1em;
+}
+
+/* 主体部分布局结束*/
+
+/* 尾部 */
+.Site-footer {
+
+}
+
+/* 表单布局 */
+
+form {
+	margin: 0 auto;
+	padding: 1em;
+	min-width: 48em;
+}
+
+
+.inputGroup {
+	display: flex;
+	margin-bottom: 1em;
+}
+.inputGroup-item {
+	/*这里的是可以定制的*/
+	background-color: hsla(31, 15%, 50%, .1);
+	color: #666;
+	font: inherit;
+	font-weight: 500;
+}
+.inputGroup-field {
+	flex: 1;
+}
+.inputGroup-item, .inputGroup-field {
+	border: 1px solid hsla(31, 15%, 50%, .25);
+	padding: .5em .75em;
+}
+.inputGroup-item:first-child, .inputGroup-field:first-child {
+	border-radius: 2px 0 0 2px;
+}
+.inputGroup-item:last-child, .inputGroup-field:last-child {
+	border-radius: 0 2px 2px 0;
+}
+.inputGroup-item:not(:first-child), .inputGroup-field:not(:first-child) {
+	border-left: 0;
+}
+/* 表单布局结束 */

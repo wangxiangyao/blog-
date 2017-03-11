@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>任务一demo</title>
+  <!-- 在这引入了我造的小轮子 -->
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="embellish.css">
+</head>
+<body class="Site">
+  <header class="Site-header bg-black">
+    <div class="Header">
+      <h1 class="Header-title white">网站一级标题</h1>
+      <nav>
+        <ul class="nav-ul--end nav-ul--center">
+          <li><a href="#">导航链接一</a></li>
+          <li><a href="#">导航链接二</a></li>
+          <li><a href="#">导航链接三</a></li>
+          <li><a href="#">导航链接四</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<!-- 下边是三篇文章，我使用article标签来包裹，一级标题、作者、发布时间包裹在header中，其余用section包裹 -->
+<!-- 第一篇文章开始 -->
+<main class="Site-content bg-gray">
+  <article class="grid grid--col bg-white">
+    <header class="grid-cell">
+      <h1>文章一级标题</h1>
+      <span class="author">文章作者</span>
+      <time class="time_publish" datatime="2017-03-03" pubdate>2017年03月03日</time>
+    </header>
+    <section>
+      <h2>文章二级标题</h2>
+      <p>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，<br />换行了<br />这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，<a href="http://ife.baidu.com/">一个跳转到百度前端学院的链接</a>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落
+      </p>
+      <img src="http://ojekrccly.bkt.clouddn.com/c253db98800a0f88d6a7885c2c4d0b54.jpg" alt="好看的图片——小狗" />
+      <p>
+      这是一个很长的段落，这是一个很长的段落，<a href="http://ife.baidu.com/">一个跳转到百度前端学院的链接</a>这是一个很长的段落，<br />换行了<br />这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，
+      </p>
+    </section>
+  </article>
+<!-- 第一篇文章结束 -->
+
+<!-- 第二篇文章开始 -->
+  <article class="grid grid--col bg-white">
+    <header>
+      <h1>另一篇文章一级标题</h1>
+      <span class="author">文章作者</span>
+      <time class="time_publish" datatime="2017-03-03" pubdate>2017年03月03日</time>
+    </header>
+
+    <section>
+     <h2>文章二级标题</h2>
+     <p>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，<br />换行了<br />这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，<a href="http://ife.baidu.com/">一个跳转到百度前端学院的链接</a>这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，这是一个很长的段落，<br>
+     <img src="http://ojekrccly.bkt.clouddn.com/c253db98800a0f88d6a7885c2c4d0b54.jpg" alt="好看的图片——小狗" /></p>
+    </section>
+    <section>
+      <ul>
+        <li>列表项目一</li>
+        <li>列表项目二</li>
+        <li>列表项目三</li>
+      </ul>
+    </section>
+  </article>
+
+   <section class="grid grid--col bg-white album" role="album">
+      <h2>图片</h2>
+      <ul>
+         <p class="album-item">
+          好看的图片<br />
+           <img src="http://ojekrccly.bkt.clouddn.com/c253db98800a0f88d6a7885c2c4d0b54.jpg" alt="好看的图片——小狗" />
+      </p>
+
+       <p class="album-item">
+          好看的图片<br />
+           <img src="http://ojekrccly.bkt.clouddn.com/c253db98800a0f88d6a7885c2c4d0b54.jpg" alt="好看的图片——小狗" />
+      </p>
+          <p class="album-item">
+          好看的图片<br />
+           <img src="http://ojekrccly.bkt.clouddn.com/c253db98800a0f88d6a7885c2c4d0b54.jpg" alt="好看的图片——小狗" />
+      </p>
+          <p class="album-item">
+          好看的图片<br />
+           <img src="http://ojekrccly.bkt.clouddn.com/c253db98800a0f88d6a7885c2c4d0b54.jpg" alt="好看的图片——小狗" />
+      </p>
+          <p class="album-item">
+          好看的图片<br />
+           <img src="http://ojekrccly.bkt.clouddn.com/c253db98800a0f88d6a7885c2c4d0b54.jpg" alt="好看的图片——小狗" />
+      </p>
+          <p class="album-item">
+          好看的图片<br />
+           <img src="http://ojekrccly.bkt.clouddn.com/c253db98800a0f88d6a7885c2c4d0b54.jpg" alt="好看的图片——小狗" />
+      </p>
+      </ul>
+
+    </section>
+
+<article class="grid grid--col bg-white">
+  <header>
+     <h1>最后一篇 文章一级标题</h1>
+     <span class="author">文章作者</span>
+     <time class="time_publish" >时间</time>
+  </header>
+  <section>
+     <h2>文章二级标题</h2>
+     <ol class="bold">
+      <li>排名1</li>
+      <li>排名2</li>
+      <li>排名3</li>
+    </ol>
+    <p>下边是一个表格</p>
+    <table class="table" cellspacing="0">
+      <thead class="bg-black white">
+        <tr>
+          <td>表头</td>
+          <td>表头</td>
+          <td>表头</td>
+        </tr>
+      </thead>
+      <tr>
+         <td>表内容单元格</td>
+        <td>表内容单元格</td>
+        <td><a href="#">操作</a></td>
+      </tr>
+       <tr>
+         <td>表内容单元格</td>
+        <td>表内容单元格</td>
+        <td><a href="#">操作</a></td>
+      </tr>
+       <tr>
+         <td>表内容单元格</td>
+        <td>表内容单元格</td>
+        <td><a href="#">操作</a></td>
+      </tr>
+       <tr>
+         <td>表内容单元格</td>
+        <td>表内容单元格</td>
+        <td><a href="#">操作</a></td>
+      </tr>
+      <tr class="bg-gray">
+        <td>总计</td>
+        <td colspan='2'>1000</td>
+      </tr>
+    </table>
+  </section>
+  </article>
+
+  <aside class="grid grid--col bg-white">
+      <h1>侧边栏</h1>
+      <section>
+        <h1 class="quote">侧边栏注册窗口标题</h1>
+
+        <div class="grid">
+          
+        
+            <form action="#" id="form1">
+            <!-- 三个输入框 -->
+              <div class="inputGroup">
+                <label for="e-mail" class="inputGroup-item grid-cell--col2 text--right">请输入邮箱：</label>
+                <input class="inputGroup-field grid-cell--col8" type="email" name="email" id="e-mail" placeholder="请输入邮箱"/>
+              </div>
+              <div class="inputGroup">
+                <label for="password" class="inputGroup-item grid-cell--col2 text--right">请输入密码：</label>
+                <input class="inputGroup-field grid-cell--col8" type="password" name="password" id="password" pattern="[0-9a-zA-Z]{6, 16}" placeholder="密码"/>
+              </div>
+              <div class="inputGroup">
+                <label for="re-password" class="inputGroup-item  grid-cell--col2 text--right">请确认密码：</label>
+                <input class="inputGroup-field grid-cell--col8" type="password" name="repassword" id="re-password" pattern="[0-9a-zA-Z]{6, 16}" placeholder="请再次输入密码"/>
+              </div>
+            <!-- 三个输入框结束 -->
+              <p class="dim">密码为6-16位数字/英文</p>
+              
+              <div class="inputGroup">
+                <span class="GroupName">性别：</span>
+                <input type="radio" name="sex" id="nan"/><label for="nan"> 男</label>
+                <input type="radio" name="sex" id="nv"/><label for="nv"> 女</label>
+              </div>
+              
+               <div class="inputGroup">
+                <span class="GroupName">城市：</span>
+                <select name="city" id="city_select">
+                  <option value="北京" selected>北京</option>
+                  <option value="上海">上海</option>
+                  <option value="栾川">栾川</option>
+                </select>
+              </div>
+              <div class="inputGroup">
+                <span class="GroupName">爱好：</span>
+                <input type="checkbox" value="运动" id="yundong"/><label for="yundong">运动</label>
+                <input type="checkbox" value="音乐" id="yinyue"/><label for="yinyue">音乐</label>
+                <input type="checkbox" value="美食" id="meishi"/><label for="meishi">美食</label>
+              </div>
+              
+
+              <div class="inputGroup">
+                <span class="GroupName">个人描述：</span>
+                <textarea name="mine" id="" cols="30" rows="2"></textarea>
+              </div>
+
+              <input type="submit" value="确认提交" class="button button--full bg-skyblue white">
+            </form>
+
+
+        </div>
+      </section>
+    </aside>
+</main>
+
+
+<footer class="Site-footer text--center bg-black">
+  <p class="white">版权所有©</p>
+</footer>
+
+
+</body>
+</html>
