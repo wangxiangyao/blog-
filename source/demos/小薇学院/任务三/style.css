@@ -1,0 +1,55 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+}
+
+.Site {
+	padding: 1.5em;
+}
+.Site-content {
+	display: flex;
+	padding: 1em;
+	border: 2px solid #999;
+	background-color: #ccc;
+}
+.group-name {
+	display: flex;
+	padding: 1em;
+	width: 200px;
+	height: 112px;
+	flex: 0 0 auto;
+	justify-content: space-around;
+	background-color: #fff;
+	margin-right: 1em;
+}
+.group-info {
+	padding: 1em;
+	flex: 1;
+	background-color: #fff;
+	margin-right: 1em;
+}
+.group-member {
+	display: flex;
+	padding: 1em;
+	flex: 0 0 auto;
+	flex-direction: column;
+	width: 120px;
+	height: 400px;
+	background-color: #fff;
+}
+.group-man {
+	display: flex;
+	padding: 1em 0 0 1em;
+	margin: -1em 0 1em -1em;
+}
+.group-avater,
+.group-man-avater {
+	width: 80px;
+	height: 80px;
+	background-color: black;
+}
+.group-man-avater {
+	margin: auto;
+}

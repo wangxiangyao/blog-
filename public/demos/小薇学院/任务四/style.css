@@ -1,0 +1,27 @@
+.box {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	overflow: hidden;
+	width: 400px;
+	height: 200px;
+	background-color: #ccc;
+}
+.c {
+	position: absolute;
+	background-color: #fc0;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+.c--top {
+	left: -50px;
+	top: -50px;
+}
+.c--bottom {
+	bottom: -50px;
+	right: -50px;
+}

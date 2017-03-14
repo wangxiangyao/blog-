@@ -1,0 +1,383 @@
+*,
+::after,
+::before {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+}
+.Site {
+	display: flex;
+	flex-direction: column;
+	width: 980px;
+	margin: auto;
+	padding: 22px 44px;
+}
+
+
+/* 这里利用order排序 */
+.Site-header {
+	display: flex;
+	order: -1;
+	justify-content: space-between;
+	padding: 22px 0 0;
+	margin-bottom: 22px;
+	border-bottom: 2px solid #938e8c;
+	font-size: 12px;
+	font-family: "黑体", "Microsoft YaHei", "WenQuanYi Micro Hei";
+}
+.Site-content {
+	padding: 22px 0 0;
+}
+.Site-footer {
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 22px;
+	border-top: 2px solid #938e8c;
+	font-size: 12px;
+	font-family: "黑体", "Microsoft YaHei", "WenQuanYi Micro Hei";
+}
+.Site-footer > .footer-info {
+	color: #d45d5c;
+}
+
+/* 头部 */
+.logoinfo {
+	margin-top: -44px;
+	padding-top: 44px;
+	height: 61px;
+	width: 110px;
+	background-color: #d45d5c;
+	color: #fff;
+	text-indent: 8px;
+}
+.time {
+	color: #d45d5c;
+}
+/* 头部结束 */
+
+/* 布局总类 */
+
+.box {
+	display: flex;
+}
+.box--space-between {
+	justify-content: space-between;
+}
+.box-gutters {
+	margin-bottom: 22px;
+}
+.box-padding {
+	padding: 22px 0 0;
+}
+.box--col {
+	flex-direction: column;
+}
+.box--end {
+	justify-content: flex-end;
+}
+.box > .space {
+	display: flex;
+}
+.space {
+	flex: 1;
+}
+.space--col4 {
+	flex: 0 0 33.3333%;
+}
+
+/* 主体修饰 */
+.main-stage {
+	position: relative;
+}
+.shade {
+	position: absolute;
+	width: 191px;
+	height: 301px;
+}
+.shade-left {
+	top: 0;
+	left: 0;
+	background-color: rgba(117,184,107,.5);
+}
+.shade-right {
+	top: 0;
+	right: 0;
+	background-color: rgba(204,128,145,.5);
+}
+
+/* 额外信息文字的样式 */
+.info {
+	color: #676767;
+	font-size: 12px;
+}
+
+
+/* 主体第一部分*/
+.about-technologe {
+	width: 203px;
+	border-top: 2px solid #cc8091;
+}
+.about-technologe > .title {
+	font: 24px "Microsoft YaHei", "WenQuanYi Micro Hei";
+	margin:0 auto 0 0;
+	border-bottom: 2px solid #000;
+}
+.about-technologe > .title:first-letter {
+	font-size: 30px;
+}
+.about-technologe > .info {
+	font-family: "楷体", "Microsoft YaHei", "WenQuanYi Micro Hei";
+}
+
+#big-number {
+	margin: auto 0;
+	font-size: 116px;
+	line-height: 1;
+	color: #75b86b;
+	font-family: "Microsoft YaHei", "WenQuanYi Micro Hei";
+	font-style: italic;
+	text-indent: -20px;
+}
+#css {
+	font-family: "Microsoft YaHei", "WenQuanYi Micro Hei";
+	color: #cc8091;
+	line-height: 1;
+}
+#css-version {
+	font-size: 55px;
+	margin-right: 5px;
+}
+#css-name {
+	font-size: 21px;
+}
+/* 主体第一部分结束 */
+
+/* 主体第二部分结束 */
+#wwh {
+	width: 641px;
+}
+.wwh-model {
+	padding: 0 10px;
+}
+.wwh-model .ul-none {
+	list-style: none;
+	padding: 0;
+}
+ul .spacile {
+	color: rgba(205,74,72,.7);
+	font-size: 12px;
+	line-height: 16px;
+}
+
+.wwh-title {
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.wwh-title--green {
+	color: #75b86b;
+}
+.wwh-title--orange {
+	color: #E2AD3A;
+}
+.wwh-title--red {
+	color: #cc8091;
+}
+.wwh-content {
+	font-size: 12px;
+	font-family: "Microsoft YaHei", "WenQuanYi Micro Hei";
+	color: rgba(35,24,21,.7);
+	line-height: 16px;
+}
+
+
+
+/* 主体第三部分 */
+
+.sec-stage {
+	position: relative;
+	width: 458px;
+	height: 275px;
+}
+.sec-stage-info {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,.5);
+	height: 61px;
+	width: 100%;
+}
+.sec-stage-content {
+	margin: 9px 32px 8px;
+	height: 44px;
+	border-left: 3px solid #72b16a;
+}
+.sec-stage-title {
+	font-size: 26px;
+	color: #fff;
+	font-family: "Microsoft YaHei", "WenQuanYi Micro Hei";
+	margin-left: 20px;
+	margin-right: 10px;
+	padding-top: 5px;
+}
+.sec-stage-title--sec {
+	font-size: 12px;
+	font-family: "Microsoft YaHei", "WenQuanYi Micro Hei";
+	color: #72b16a;
+	font-style: italic;
+	line-height: 140%;
+	padding-top: 20px;
+}
+
+#article {
+	padding-right: 19px;
+} 
+#article .specile {
+	color: #f5e327;
+}
+.article-title .specile {
+	font-size: 72px;
+	font-family: "黑体";
+	font-weight: bold;
+	font-style: italic;
+}
+.article-content .specile {
+	float: left;
+	font-size: 70px;
+	line-height: 1;
+	font-family: "Microsoft YaHei", "WenQuanYi Micro Hei";
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+.article-content .specile::after {
+	content: "\200b";
+	height: 0;
+	display: block;
+	clear: both;
+}
+
+.article-title-en {
+	font: bold 42px "黑体";
+	color: #11456b;
+}
+.article-title-zh {
+	font: bold 33px "黑体";
+	color: #11456b;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #11456b;
+}
+.article-content {
+	font: 12px "宋体";
+	color: #767777;
+	line-height: 16px;
+	text-align: justify;
+}
+#th-stage {
+	float: right;
+	padding: 20px 0 20px 20px;
+}
+#th-stage::after {
+	content: "\200b";
+	height: 0;
+	display: block;
+	clear: both;
+}
+
+.the-end {
+	padding: 20px 0;
+	background-color: #EEEED6;
+	width: 459px;
+	height: 318px;
+}
+.items {
+	list-style: none;
+	margin-bottom: 6px;
+}
+.item {
+	text-align: justify;
+	margin-bottom: 20px;
+	padding-right: 20px;
+	letter-spacing: 1px;
+	font-weight: bold;
+}
+.item-info {
+	position: relative;
+	font-size: 16px;
+	font-family: "宋体";
+	color: #5a5b5b;
+}
+.icon::before {
+	content: "\200b";
+	position: absolute;
+	left: -16px;
+	top: -12px;
+	border-bottom: 8px solid #000;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+
+}
+.item-end {
+	font-size: 12px;
+	font-family: "宋体";
+	color: #5a5b5b;
+	line-height: 12px;
+	font-style: italic;
+	margin-top: 5px;
+}
+.zero {
+	width: 260px;
+	height: 160px;
+	flex: 0 0 auto;
+	background-color: #d45d5c;
+	padding: 37px 0;
+}
+.zero-content {
+	font: italic 14px "黑体";
+	color: #5a5b5b;
+	line-height: 16px;
+}
+.zero-content {
+ color:#5a5b5b;
+ padding: 5px 15px 0;
+ width: 100%;
+ height: 140px;
+ position: relative;
+ font-family: '黑体', sans-serif;
+ line-height: 150%;
+ text-indent: 35px;
+}
+.zero-content::before {
+  color: #d45d5c;
+  content: "\201C";
+  font-size: 72px;
+  position:absolute;
+  left:-70px;
+  top: 30px;
+  line-height: 0.1em;
+}
+.zero-content::after {
+  color: #d45d5c;
+  content: "\201D";
+  font-size: 72px;
+  position:absolute;
+  right:5px;
+  bottom: -5px;
+  line-height: 0.1em;
+}
+
+.bignum {
+	font-size: 110px;
+	color: #fff;
+	font-family: "Microsoft YaHei", "WenQuanYi Micro Hei";
+	line-height: 86px;
+	padding: 0 10px;
+}
+.zero-title {
+	padding: 0 10px;
+	border-left: 3px solid #fff;
+	color: #fff;
+}
+.zero-title .info {
+	color: #fff;
+}
