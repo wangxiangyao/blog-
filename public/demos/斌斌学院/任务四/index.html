@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>斌斌学院任务四</title>
+</head>
+<style>
+	.item {
+		padding: 10px;
+		background-color: red;
+		color: #fff;
+		display: inline-block;
+		margin-right: 5px;
+	}
+	#box {
+		padding: 5px 0;
+
+	}
+</style>
+<body>
+	<div>
+		<input type="text" id="input">
+		<div id="buttons">
+			<button data-direction="left" data-way="in">左侧入</button>
+			<button data-direction="right" data-way="in">右侧入</button>
+
+			<button data-direction="left" data-way="out">左侧出</button>
+			<button data-direction="right" data-way="out">右侧出</button>
+		</div>	
+	</div>
+	<div id="box">
+		
+	</div>
+
+	<script>
+
+
+		window.boxArr = [];
+		function render(data, direction, way) {
+			oBox = document.querySelector("#box");
+			len = oBox.length;
+			if ( direction === "right" ) {
+				if ( way === "in" ) {
+					oItem = document.createElement("div");
+					oItem.className = "item";
+					oItem.innerHTML = data[data.length - 1];
+					oBox.appendChild(oItem);
+				} else {
+					oBox.removeChild(oBox.lastElementChild);
+				}
+			} else {
+				if ( way === "in" ) {
+					oItem = document.createElement("div");
+					oItem.className = "item";
+					oItem.innerHTML = data[0];
+					oBox.insertBefore(oItem, oBox.firstChild);
+				} else {
+					oBox.removeChild(oBox.firstElementChild);
+				}
+			}
+
+		}
+
+		function getData() {
+			var data = document.querySelector("#input").value;
+			return data;
+		}
+		function handle(event) {
+			var data = getData();
+			var direction = event.target.dataset.direction;
+			var way = event.target.dataset.way;
+			if ( way === "in" ) {
+				if ( direction === "left" ) {
+					boxArr.unshift(data);
+				} else if (direction === "right" ) {
+					boxArr.push(data);
+				} else {
+					console.log("direction接口参数错误");
+					return;
+				}
+			} else if ( way === "out" ) {
+				if( boxArr.length === 0 ) {
+					console.log("已经为空，无法移出");
+					return;
+				} else if ( direction === "left" ) {
+					boxArr.shift();
+				} else if ( direction === "right" ) {
+					boxArr.pop();
+				} else {
+					console.log("direction接口参数错误");
+					return;
+				}
+			} else {
+				console.log("way接口错误");
+				return;
+			}
+
+			render(boxArr, direction, way);
+		}
+
+		function init() {
+			document.querySelector("#buttons").addEventListener("click", handle);
+		}
+
+		init();
+	</script>
+</body>
+</html>
